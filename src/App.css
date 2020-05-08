@@ -1,0 +1,95 @@
+.app {
+  background-color: #002650;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.name{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: white;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.haha{
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+}
+
+.ribbon{
+    width: 100px;
+    margin-top: 10px;
+    margin-right: 40px;
+}
+
+.hr {
+  width: auto;
+  padding: 0px 10% 10px 30px;
+  color: white;
+  opacity: 0.4;
+  padding-top: 2px;
+  background-color: rgba(0, 255, 255, 0);
+  border: none;
+  border-bottom: 3px solid white;
+}
+
+.showAboutMe {
+  animation: 3s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+.showContactMeStart {
+  animation: 4.5s fadeIn;
+  display: inline-block;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+.showContactMe {
+  animation: 6.5s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  99% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
+
+a {
+  color: #2bc994;
+  font-size: 18.5px;
+}
+
+@media screen and (max-width: 580px){
+    .name{
+        font-size: 40px;
+    }
+    .name .ribbon{
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .name{
+        font-size: 28px;
+    }
+    .name .ribbon{
+        width: 60px;
+        margin-right: 20px;
+    }
+}

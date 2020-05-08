@@ -1,2 +1,3 @@
-# archan_landing_page
-Personal Landing Page Source Code
+# archanrupela.com
+Source code for my personal landing page <br />
+Created using HTML,CSS,JavaScript with React Library

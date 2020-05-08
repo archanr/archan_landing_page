@@ -1,0 +1,140 @@
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.terminal {
+  background-color: #35383d;
+  color: white;
+  padding: 30px;
+  border-radius: 5px;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 20px;
+  max-width: 1200px;
+  width: 70%;
+  margin-top: 20px;
+}
+
+.terminal-contact{
+  margin-bottom: 20px;
+  margin-top: -52px;
+  width: 30%;
+}
+
+.outer {
+  width: 90%;
+  text-align: center;
+}
+
+.terminal-buttons {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: -60px;
+}
+
+.terminal-button {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: inherit;
+  margin-right: 5px;
+}
+
+.terminal-button-close {
+  background-color: red;
+}
+
+.terminal-button-min {
+  background-color: orange;
+}
+
+.terminal-button-max {
+  background-color: green;
+}
+
+.Typist p {
+  display: inline-block;
+}
+
+.Typist {
+  display: inline-block;
+}
+
+.Typist span {
+  display: inline-block;
+}
+
+.terminal-header {
+  width: calc(100% + 60px);
+  margin: -30px -30px 13px -30px;
+  text-align: center;
+  border-radius: 4px 4px 0px 0px;
+  background-color: white;
+  color: #5f5f5f;
+  position: relative;
+}
+
+.blinking_cursor_main {
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  animation-name: blink;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+}
+
+.blinking_cursor_contact {
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  animation-name: blink;
+  animation-duration: 995ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  position: relative;
+}
+.cursor i {
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: gray;
+  left: 5px;
+  top: 10%;
+  animation-name: blink;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 880px){
+  .terminal-contact{
+    width: 70%;
+  }
+}
