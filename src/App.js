@@ -16,7 +16,7 @@ class App extends React.Component {
       mouseControls: false,
       touchControls: false,
       color: 0xebbbcb,
-      backgroundColor: 0x2650,
+      backgroundColor: 0x053266,
       points: 6.00,
       maxDistance: 25.00,
       spacing: 19.00
@@ -61,26 +61,14 @@ class App extends React.Component {
             <div>
               <div className="showAboutMe">
                 <p>
-                  Hello! My name is Archan Rupela and I'm a graduating senior at
-                  Western Washington University majoring in Computer Science with
-                  a minor in Business Administration.
+		              Hello! My name is Archan Rupela, and welcome to my page on the internet. 
+                  I'm a 	software developer, engineer, and leader with one year of industry experience.
                 </p>
                 <p>
-                  Chances are, you're here to learn about my professional
-                  experience!
+                  Chances are, you're here to learn more about my professional experience. I'm currently a Software Developer at Charles Schwab working on building                   a clean, intuitive, user interface for our products using Angular. Throughout my time there, I've gained substantial experience in communicating                   my ideas, problem solving, identifying and fixing bugs, and writing code in different languages (Java, TypeScript, C#). I’m confident that all                     these skills are exceptionally useful to me as an engineer.
                 </p>
                 <p>
-                  Last summer, while interning at PEMCO Insurance as a Computer
-                  Engineer, I developed scripts to automate the installation
-                  process for newly deployed computers and ensured other devices
-                  had standardized software by taking the necessary measures to
-                  update them.
-
-                  I gained substantial experience in communicating my ideas,
-                  problem solving, identifying and fixing bugs, and writing code in different
-                  languages (Java, Python, PowerShell). I’m
-                  confident that all these skills would be exceptionally useful to
-                  me as an engineer.
+                  I am always on the lookout for new, challenging opportunities. Feel free to contact me!
                 </p>
                 <span>➜ ~ </span> <span className="blinking_cursor_main">|</span>
               </div>
