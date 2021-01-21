@@ -61,14 +61,13 @@ class App extends React.Component {
             <div>
               <div className="showAboutMe">
                 <p>
-		              Hello! My name is Archan Rupela, and welcome to my page on the internet. 
-                  I'm a 	software developer, engineer, and leader with one year of industry experience.
+		Hello! My name is Archan Rupela, and welcome to my page on the internet. I'm a 	software developer, engineer, and leader with one year of industry experience.
                 </p>
                 <p>
-                  Chances are, you're here to learn more about my professional experience. I'm currently a Software Developer at Charles Schwab working on building                   a clean, intuitive, user interface for our products using Angular. Throughout my time there, I've gained substantial experience in communicating                   my ideas, problem solving, identifying and fixing bugs, and writing code in different languages (Java, TypeScript, C#). I’m confident that all                     these skills are exceptionally useful to me as an engineer.
+Chances are, you're here to learn more about my professional experience. I'm currently a Software Developer at Charles Schwab working on building a clean, intuitive, user interface for our products using Angular. Throughout my time there, I've gained substantial experience in communicating my ideas, problem solving, identifying and fixing bugs, and writing code in different languages (Java, TypeScript, C#). I’m confident that all these skills are exceptionally useful to me as an engineer.
                 </p>
                 <p>
-                  I am always on the lookout for new, challenging opportunities. Feel free to contact me!
+I am always on the lookout for new, challenging opportunities. Feel free to contact me!
                 </p>
                 <span>➜ ~ </span> <span className="blinking_cursor_main">|</span>
               </div>
