@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.terminal {
+.terminal-about {
   background-color: #35383d;
   color: white;
   padding: 30px;
@@ -19,7 +19,13 @@
 }
 
 .terminal-contact{
-  margin-bottom: 20px;
+  background-color: #35383d;
+  color: white;
+  padding: 30px;
+  border-radius: 5px;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 20px;
+  max-width: 1200px;
   margin-top: -52px;
   width: 30%;
 }

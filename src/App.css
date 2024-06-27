@@ -1,5 +1,5 @@
 .app {
-  background-color: #135039;
+  background-color: #523986;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -18,10 +18,12 @@
     align-items: center;
 }
 
-.haha{
-  height: 100vh;
-  width: 100vw;
-  background-color: #000;
+.systemTerminalScheme1 {
+  color: #2bc994;
+}
+
+.systemTerminalScheme2 {
+  color: #446baf;
 }
 
 .ribbon{
@@ -71,7 +73,7 @@
 }
 
 a {
-  color: #2bc994;
+  color: #FFC300;
   font-size: 18.5px;
 }
 

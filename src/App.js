@@ -6,7 +6,14 @@ import Typist from "react-typist";
 import BIRDS from 'vanta/dist/vanta.net.min'
 import Draggable from 'react-draggable';
 
+
 class App extends React.Component {
+  state = {
+    aboutTerminalOpacity: 1,
+    contactTerminalOpacity: 1,
+  }
+
+  toggle = () => this.setState((currentState) => ({show: !currentState.show}));
   constructor() {
     super();
     this.vantaRef = React.createRef();
@@ -16,11 +23,11 @@ class App extends React.Component {
       el: this.vantaRef.current,
       mouseControls: false,
       touchControls: false,
-      color: 0xffffff,
-      backgroundColor: 0x3a0ca3,
-      points: 6.00,
+      color: 0xFFFFFF,
+      backgroundColor: 0x523986,
+      points: 12.00,
       maxDistance: 25.00,
-      spacing: 19.00
+      spacing: 20.00
     });
   }
   componentWillUnmount() {
@@ -28,8 +35,11 @@ class App extends React.Component {
   }
 
   render() {
+    const aboutTerminalExit = () => { this.setState({  aboutTerminalOpacity: 0 }); };
+    const contactTerminalExit = () => { this.setState({  contactTerminalOpacity: 0 }); };
+    
     return (
-        <div className="app" ref={this.vantaRef}>
+        <div className="app">
         <div className="name">
           <b>Archan Rupela</b>
           <div id="content>">
@@ -37,19 +47,19 @@ class App extends React.Component {
           </div>
         </div>
         <div className="hr"></div>
-        <div className="terminal-container">
-          <Draggable defaultPosition={{x: 0, y: 0}} position={null} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <div className="terminal terminal-about">
-              <div className="terminal-header"> About Me <div className="terminal-buttons">
+        <div className="terminal-container" ref={this.vantaRef}>
+          <Draggable bounds={{top: -70, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+            <div className="terminal terminal-about" style={{opacity: this.state.aboutTerminalOpacity}}>
+              <div className="terminal-header"> about-me <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
                   <div className="terminal-button terminal-button-max"></div>
-                  <div className="terminal-button terminal-button-close"></div>
+                  <div className="terminal-button terminal-button-close" onClick={aboutTerminalExit}></div>
                 </div>
               </div>
               <div>
-                <span>➜ ~ </span>
+                <span className="systemTerminalScheme1">system@archan:</span><span className="systemTerminalScheme2">~</span><span color="white">$ </span>
                 <Typist className="TypistA" avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={1500}>
-                  <span>cat read.txt</span>
+                  <span>cat readMe.md</span>
                 </Typist>
               </div>
               <div>
@@ -57,22 +67,22 @@ class App extends React.Component {
                   <p> Hello! My name is Archan Rupela and welcome to my page on the internet. I'm an engineer, game developer, and leader with four years of industry experience. Check out my published games from the link below! </p>
                   <p> Chances are, you're here to learn more about my professional experience. Currently, I am a Software Engineer at American Express using continuous integration and delivery (CI/CD) design practices to improve and automate the ability to quickly release bug fixes and new features. Throughout my time there, I've gained substantial experience in GitHub Actions, CI/CD pipeline automation, identifying and fixing bugs, and writing code in different languages (Java, Python, Bash). I’m confident that all these skills are exceptionally useful to me as an engineer. </p>
                   <p> I am always on the lookout for new, challenging opportunities. Feel free to contact me! </p>
-                  <span>➜ ~ </span>
+                  <span className="systemTerminalScheme2">~</span><span color="white"> $ </span>
                   <span className="blinking_cursor_main">|</span>
                 </div>
               </div>
             </div>
           </Draggable>
-          <Draggable defaultPosition={{x: 0, y: 0}} position={null} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <div className="terminal terminal-contact">
-              <div className="terminal-header"> Contact Info <div className="terminal-buttons">
+          <Draggable bounds={{top: -486, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+            <div className="terminal terminal-contact" style={{opacity: this.state.contactTerminalOpacity}}>
+              <div className="terminal-header"> sys.root: contact-info <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
                   <div className="terminal-button terminal-button-max"></div>
-                  <div className="terminal-button terminal-button-close"></div>
+                  <div className="terminal-button terminal-button-close" onClick={contactTerminalExit}></div>
                 </div>
               </div>
               <div>
-                <span>➜ ~ </span>
+              <span className="systemTerminalScheme1">system@archan:</span><span className="systemTerminalScheme2">~</span><span color="white">$ </span>
                 <div className="showContactMeStart">
                   <Typist className="TypistA" avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={5000}>
                     <span>cat contact.md</span>
@@ -104,7 +114,7 @@ class App extends React.Component {
                 </p>
               </div>
               <div className="showContactMe">
-                <span>➜ ~ </span>
+                <span className="systemTerminalScheme2">~</span><span color="white"> $ </span>
                 <span className="blinking_cursor_contact">|</span>
               </div>
             </div>
