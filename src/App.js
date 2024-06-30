@@ -5,12 +5,17 @@ import logo from "./archan.png";
 import Typist from "react-typist";
 import BIRDS from 'vanta/dist/vanta.net.min'
 import Draggable from 'react-draggable';
+import { Resizable } from 're-resizable';
 
 
 class App extends React.Component {
   state = {
     aboutTerminalOpacity: 1,
     contactTerminalOpacity: 1,
+    aboutTerminalWidth: '80%',
+    aboutTerminalWindowToggle: false,
+    contactTerminalWidth: '30%',
+    contactTerminalWindowToggle: false,
   }
 
   toggle = () => this.setState((currentState) => ({show: !currentState.show}));
@@ -23,8 +28,8 @@ class App extends React.Component {
       el: this.vantaRef.current,
       mouseControls: false,
       touchControls: false,
-      color: 0xFFFFFF,
-      backgroundColor: 0x523986,
+      color: 0xFADEDE,
+      backgroundColor: 0x373778,
       points: 12.00,
       maxDistance: 25.00,
       spacing: 20.00
@@ -37,54 +42,80 @@ class App extends React.Component {
   render() {
     const aboutTerminalExit = () => { this.setState({  aboutTerminalOpacity: 0 }); };
     const contactTerminalExit = () => { this.setState({  contactTerminalOpacity: 0 }); };
-    
+    const aboutTerminalResize = () => {  
+      if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '30%', aboutTerminalWindowToggle: true}); }
+      if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '80%', aboutTerminalWindowToggle: false}); }
+    };
+    const contactTerminalResize = () => { 
+      if (!this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '65%', contactTerminalWindowToggle: true }); }
+      if (this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '30%', contactTerminalWindowToggle: false }); }
+    };
+
     return (
-        <div className="app">
+      <div className="app">
         <div className="name">
           <b>Archan Rupela</b>
           <div id="content>">
-            <img src={logo} className="ribbon" />
+            <img src={logo} className="profile-photo" />
           </div>
         </div>
         <div className="hr"></div>
         <div className="terminal-container" ref={this.vantaRef}>
-          <Draggable bounds={{top: -70, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <div className="terminal terminal-about" style={{opacity: this.state.aboutTerminalOpacity}}>
-              <div className="terminal-header"> about-me <div className="terminal-buttons">
+          <Draggable handle=".terminal-header" bounds={{bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+            <Resizable className="terminal-about" style={{opacity: this.state.aboutTerminalOpacity}} size={{ width: this.state.aboutTerminalWidth }} 
+              onResizeStop={(d) => {this.setState({  aboutTerminalWidth: this.state.aboutTerminalWidth + d.width });}}>  
+              <div className="terminal-header"> about-me 
+                <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
-                  <div className="terminal-button terminal-button-max"></div>
+                  <div className="terminal-button terminal-button-max" onClick={aboutTerminalResize}></div>
                   <div className="terminal-button terminal-button-close" onClick={aboutTerminalExit}></div>
                 </div>
               </div>
               <div>
-                <span className="systemTerminalScheme1">system@archan:</span><span className="systemTerminalScheme2">~</span><span color="white">$ </span>
-                <Typist className="TypistA" avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={1500}>
+                <span className="systemTerminalScheme1">system@archan:</span>
+                <span className="systemTerminalScheme2">~</span>
+                <span color="white">$ </span>
+                <Typist avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={1500}>
                   <span>cat readMe.md</span>
                 </Typist>
               </div>
               <div>
                 <div className="showAboutMe">
-                  <p> Hello! My name is Archan Rupela and welcome to my page on the internet. I'm an engineer, game developer, and leader with four years of industry experience. Check out my published games from the link below! </p>
-                  <p> Chances are, you're here to learn more about my professional experience. Currently, I am a Software Engineer at American Express using continuous integration and delivery (CI/CD) design practices to improve and automate the ability to quickly release bug fixes and new features. Throughout my time there, I've gained substantial experience in GitHub Actions, CI/CD pipeline automation, identifying and fixing bugs, and writing code in different languages (Java, Python, Bash). I’m confident that all these skills are exceptionally useful to me as an engineer. </p>
-                  <p> I am always on the lookout for new, challenging opportunities. Feel free to contact me! </p>
-                  <span className="systemTerminalScheme2">~</span><span color="white"> $ </span>
-                  <span className="blinking_cursor_main">|</span>
+                  <p> Hello! My name is Archan Rupela and welcome to my page on the internet. I'm an engineer, game developer, and leader with <b>four</b> years of industry experience. Check out my published games from the link below! </p>
+                  Chances are, you're here to learn more about my <b>professional experience</b>:
+                  <ul>
+                   <li> Currently a <b>Software Engineer</b> at American Express and: </li>
+                   <ul>
+                    <li> Writing GitHub Actions workflows </li>
+                    <li> Using continuous integration and delivery (CI/CD) design practices to automate and improve the pipeline</li>
+                    <li> Developing using different coding languages (Python, Java, Bash) </li>
+                   </ul>
+                   <li> Previous worked as a <b>Software Developer</b> at Charles Schwab </li>
+                  </ul>
+                  <p>I'm confident that all these skills are exceptionally useful to me as an engineer. I am always on the lookout for new, challenging opportunities. Feel free to contact me!</p>
+                  <span className="systemTerminalScheme2">~</span>
+                  <span color="white"> $ </span>
+                  <span className="blinking-cursor-about">|</span>
                 </div>
               </div>
-            </div>
+            </Resizable>
           </Draggable>
-          <Draggable bounds={{top: -486, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <div className="terminal terminal-contact" style={{opacity: this.state.contactTerminalOpacity}}>
-              <div className="terminal-header"> sys.root: contact-info <div className="terminal-buttons">
+          
+          <Draggable handle=".terminal-header" bounds={{bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+            <Resizable className="terminal-contact" style={{opacity: this.state.contactTerminalOpacity}} size={{ width: this.state.contactTerminalWidth }} 
+              onResizeStop={(d) => {this.setState({  contactTerminalWidth: this.state.contactTerminalWidth + d.width });}}>  
+              <div className="terminal-header"> contact-info <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
-                  <div className="terminal-button terminal-button-max"></div>
+                  <div className="terminal-button terminal-button-max" onClick={contactTerminalResize}></div>
                   <div className="terminal-button terminal-button-close" onClick={contactTerminalExit}></div>
                 </div>
               </div>
               <div>
-              <span className="systemTerminalScheme1">system@archan:</span><span className="systemTerminalScheme2">~</span><span color="white">$ </span>
+                <span className="systemTerminalScheme1">system@archan:</span>
+                <span className="systemTerminalScheme2">~</span>
+                <span color="white">$ </span>
                 <div className="showContactMeStart">
-                  <Typist className="TypistA" avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={5000}>
+                  <Typist avgTypingDelay={30} cursor={{ hideWhenDone: true }} startDelay={5000}>
                     <span>cat contact.md</span>
                   </Typist>
                 </div>
@@ -114,10 +145,11 @@ class App extends React.Component {
                 </p>
               </div>
               <div className="showContactMe">
-                <span className="systemTerminalScheme2">~</span><span color="white"> $ </span>
-                <span className="blinking_cursor_contact">|</span>
+                <span className="systemTerminalScheme2">~</span>
+                <span color="white"> $ </span>
+                <span className="blinking-cursor-contact">|</span>
               </div>
-            </div>
+            </Resizable>
           </Draggable>
         </div>
       </div>
