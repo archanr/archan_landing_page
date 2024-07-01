@@ -43,7 +43,7 @@ class App extends React.Component {
     const aboutTerminalExit = () => { this.setState({  aboutTerminalOpacity: 0 }); };
     const contactTerminalExit = () => { this.setState({  contactTerminalOpacity: 0 }); };
     const aboutTerminalResize = () => {  
-      if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '30%', aboutTerminalWindowToggle: true}); }
+      if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '35%', aboutTerminalWindowToggle: true}); }
       if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '80%', aboutTerminalWindowToggle: false}); }
     };
     const contactTerminalResize = () => { 
@@ -61,7 +61,7 @@ class App extends React.Component {
         </div>
         <div className="hr"></div>
         <div className="terminal-container" ref={this.vantaRef}>
-          <Draggable handle=".terminal-header" bounds={{bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+          <Draggable handle=".terminal-header" bounds={{top:-155, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
             <Resizable className="terminal-about" style={{opacity: this.state.aboutTerminalOpacity}} size={{ width: this.state.aboutTerminalWidth }} 
               onResizeStop={(d) => {this.setState({  aboutTerminalWidth: this.state.aboutTerminalWidth + d.width });}}>  
               <div className="terminal-header"> about-me 
@@ -101,7 +101,7 @@ class App extends React.Component {
             </Resizable>
           </Draggable>
           
-          <Draggable handle=".terminal-header" bounds={{bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+          <Draggable handle=".terminal-header" bounds={{top:-628, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
             <Resizable className="terminal-contact" style={{opacity: this.state.contactTerminalOpacity}} size={{ width: this.state.contactTerminalWidth }} 
               onResizeStop={(d) => {this.setState({  contactTerminalWidth: this.state.contactTerminalWidth + d.width });}}>  
               <div className="terminal-header"> contact-info <div className="terminal-buttons">
