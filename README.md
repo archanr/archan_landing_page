@@ -1,7 +1,8 @@
-# Source code for my personal landing page
+# Source Code - Archan's Website 
 
-## Created by Archan Rupela | Last Updated June 2022
-## Created using HTML, CSS, and JavaScript with React Library
+####
+Created by Archan Rupela | Last Updated July 2024
+### Created using HTML, CSS, and JavaScript with React Framework
 
 ### Instructions
 
