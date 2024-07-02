@@ -14,8 +14,10 @@ class App extends React.Component {
     contactTerminalOpacity: 1,
     aboutTerminalWidth: '80%',
     aboutTerminalWindowToggle: false,
+    aboutZIndex: 100,
     contactTerminalWidth: '30%',
     contactTerminalWindowToggle: false,
+    contactZIndex: 100,
   }
 
   toggle = () => this.setState((currentState) => ({show: !currentState.show}));
@@ -42,6 +44,8 @@ class App extends React.Component {
   render() {
     const aboutTerminalExit = () => { this.setState({  aboutTerminalOpacity: 0 }); };
     const contactTerminalExit = () => { this.setState({  contactTerminalOpacity: 0 }); };
+    const aboutClick = () => { this.setState({  aboutZIndex: 100, contactZIndex: 99 }) };
+    const contactClick = () => { this.setState({  aboutZIndex: 99, contactZIndex: 100 }) };
     const aboutTerminalResize = () => {  
       if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '35%', aboutTerminalWindowToggle: true}); }
       if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '80%', aboutTerminalWindowToggle: false}); }
@@ -62,8 +66,8 @@ class App extends React.Component {
         <div className="hr"></div>
         <div className="terminal-container" ref={this.vantaRef}>
           <Draggable handle=".terminal-header" bounds={{top:-155, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <Resizable className="terminal-about" style={{opacity: this.state.aboutTerminalOpacity}} size={{ width: this.state.aboutTerminalWidth }} 
-              onResizeStop={(d) => {this.setState({  aboutTerminalWidth: this.state.aboutTerminalWidth + d.width });}}>  
+            <Resizable className="terminal-about" style={{opacity: this.state.aboutTerminalOpacity, zIndex: this.state.aboutZIndex}} size={{ width: this.state.aboutTerminalWidth }} 
+              onResizeStop={(d) => {this.setState({  aboutTerminalWidth: this.state.aboutTerminalWidth + d.width });}} onClick={aboutClick}>  
               <div className="terminal-header"> about-me 
                 <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
@@ -85,7 +89,7 @@ class App extends React.Component {
                   Chances are, you're here to learn more about my <b>professional experience</b>:
                   <ul>
                    <li> Currently a <b>Software Engineer</b> at American Express and: </li>
-                   <ul>
+                   <ul className="innerList">
                     <li> Writing GitHub Actions workflows </li>
                     <li> Using continuous integration and delivery (CI/CD) design practices to automate and improve the pipeline</li>
                     <li> Developing using different coding languages (Python, Java, Bash) </li>
@@ -102,8 +106,8 @@ class App extends React.Component {
           </Draggable>
           
           <Draggable handle=".terminal-header" bounds={{top:-628, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-            <Resizable className="terminal-contact" style={{opacity: this.state.contactTerminalOpacity}} size={{ width: this.state.contactTerminalWidth }} 
-              onResizeStop={(d) => {this.setState({  contactTerminalWidth: this.state.contactTerminalWidth + d.width });}}>  
+            <Resizable className="terminal-contact" style={{opacity: this.state.contactTerminalOpacity, zIndex: this.state.contactZIndex}} size={{ width: this.state.contactTerminalWidth }} 
+              onResizeStop={(d) => {this.setState({  contactTerminalWidth: this.state.contactTerminalWidth + d.width });}} onClick={contactClick}>  
               <div className="terminal-header"> contact-info <div className="terminal-buttons">
                   <div className="terminal-button terminal-button-min"></div>
                   <div className="terminal-button terminal-button-max" onClick={contactTerminalResize}></div>

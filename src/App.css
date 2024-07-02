@@ -24,6 +24,11 @@
     margin-right: 40px;
 }
 
+.innerList { 
+  list-style-type: "➜ "; 
+  margin-bottom: 10px 0;
+}
+
 li {
   margin: 5px 0;
 }
