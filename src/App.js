@@ -18,6 +18,7 @@ class App extends React.Component {
     contactTerminalWidth: '30%',
     contactTerminalWindowToggle: false,
     contactZIndex: 100,
+    isMobile: false,
   }
 
   toggle = () => this.setState((currentState) => ({show: !currentState.show}));
@@ -25,6 +26,7 @@ class App extends React.Component {
     super();
     this.vantaRef = React.createRef();
   }
+  
   componentDidMount() {
     this.vantaEffect = BIRDS({
       el: this.vantaRef.current,
@@ -36,9 +38,35 @@ class App extends React.Component {
       maxDistance: 25.00,
       spacing: 20.00
     });
+    
+    // Check if mobile on mount
+    this.checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', this.checkMobile);
   }
+  
   componentWillUnmount() {
     if (this.vantaEffect) this.vantaEffect.destroy();
+    window.removeEventListener('resize', this.checkMobile);
+  }
+  
+  checkMobile = () => {
+    const isMobile = window.innerWidth <= 768;
+    this.setState({ isMobile });
+    
+    // Adjust terminal widths for mobile
+    if (isMobile) {
+      this.setState({
+        aboutTerminalWidth: '95%',
+        contactTerminalWidth: '95%'
+      });
+    } else {
+      this.setState({
+        aboutTerminalWidth: '80%',
+        contactTerminalWidth: '30%'
+      });
+    }
   }
 
   render() {
@@ -47,12 +75,22 @@ class App extends React.Component {
     const aboutClick = () => { this.setState({  aboutZIndex: 100, contactZIndex: 99 }) };
     const contactClick = () => { this.setState({  aboutZIndex: 99, contactZIndex: 100 }) };
     const aboutTerminalResize = () => {  
-      if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '35%', aboutTerminalWindowToggle: true}); }
-      if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '80%', aboutTerminalWindowToggle: false}); }
+      if (this.state.isMobile) {
+        if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '98%', aboutTerminalWindowToggle: true}); }
+        if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '95%', aboutTerminalWindowToggle: false}); }
+      } else {
+        if (!this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '35%', aboutTerminalWindowToggle: true}); }
+        if (this.state.aboutTerminalWindowToggle) { this.setState({  aboutTerminalWidth: '80%', aboutTerminalWindowToggle: false}); }
+      }
     };
     const contactTerminalResize = () => { 
-      if (!this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '65%', contactTerminalWindowToggle: true }); }
-      if (this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '30%', contactTerminalWindowToggle: false }); }
+      if (this.state.isMobile) {
+        if (!this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '98%', contactTerminalWindowToggle: true }); }
+        if (this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '95%', contactTerminalWindowToggle: false }); }
+      } else {
+        if (!this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '65%', contactTerminalWindowToggle: true }); }
+        if (this.state.contactTerminalWindowToggle) { this.setState({  contactTerminalWidth: '30%', contactTerminalWindowToggle: false }); }
+      }
     };
 
     return (
@@ -65,7 +103,7 @@ class App extends React.Component {
         </div>
         <div className="hr"></div>
         <div className="terminal-container" ref={this.vantaRef}>
-          <Draggable handle=".terminal-header" bounds={{top:-155, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+          <Draggable handle=".terminal-header" bounds={this.state.isMobile ? {top:-100, bottom: 100} : {top:-155, bottom: 270}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
             <Resizable className="terminal-about" style={{opacity: this.state.aboutTerminalOpacity, zIndex: this.state.aboutZIndex}} size={{ width: this.state.aboutTerminalWidth }} 
               onResizeStop={(d) => {this.setState({  aboutTerminalWidth: this.state.aboutTerminalWidth + d.width });}} onClick={aboutClick}>  
               <div className="terminal-header"> about-me 
@@ -104,7 +142,7 @@ class App extends React.Component {
             </Resizable>
           </Draggable>
           
-          <Draggable handle=".terminal-header" bounds={{top:-628, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+                      <Draggable handle=".terminal-header" bounds={this.state.isMobile ? {top:-100, bottom: 100} : {top:-628, bottom: 20}} grid={[1, 1]} scale={1} onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
             <Resizable className="terminal-contact" style={{opacity: this.state.contactTerminalOpacity, zIndex: this.state.contactZIndex}} size={{ width: this.state.contactTerminalWidth }} 
               onResizeStop={(d) => {this.setState({  contactTerminalWidth: this.state.contactTerminalWidth + d.width });}} onClick={contactClick}>  
               <div className="terminal-header"> contact-info <div className="terminal-buttons">

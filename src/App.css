@@ -5,6 +5,7 @@
   background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .name{
@@ -73,21 +74,62 @@ li {
   }
 }
 
-@media screen and (max-width: 580px){
+/* Tablet styles */
+@media screen and (max-width: 768px){
     .name{
         font-size: 40px;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
     }
-    .name .ribbon{
+    .profile-photo {
         width: 80px;
+        order: -1;
+        margin-right: 20px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .hr {
+        padding: 0px 5% 10px 15px;
     }
 }
 
+/* Mobile styles */
+@media screen and (max-width: 580px){
+    .name{
+        font-size: 32px;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+    }
+    .profile-photo {
+        width: 70px;
+        order: -1;
+        margin-right: 15px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .hr {
+        padding: 0px 3% 10px 10px;
+    }
+}
+
+/* Small mobile styles */
 @media screen and (max-width: 400px){
     .name{
-        font-size: 28px;
+        font-size: 24px;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
     }
-    .name .ribbon{
+    .profile-photo {
         width: 60px;
-        margin-right: 20px;
+        order: -1;
+        margin-right: 12px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .hr {
+        padding: 0px 2% 8px 8px;
     }
 }

@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 0 10px;
 }
 
 .terminal-about {
@@ -52,6 +53,7 @@
   height: 15px;
   display: inherit;
   margin-right: 5px;
+  transition: all 0.2s ease;
 }
 
 .terminal-button-close {
@@ -129,8 +131,233 @@ a {
   }
 }
 
-@media screen and (max-width: 880px){
+/* Tablet styles */
+@media screen and (max-width: 768px){
+  .terminal-container {
+    padding: 0 15px;
+  }
+  
+  .terminal-about {
+    min-width: 300px;
+    max-width: 100%;
+    width: 90%;
+    padding: 20px;
+    font-size: 16px;
+    min-height: 400px;
+  }
+  
   .terminal-contact{
-    width: 70%;
+    width: 90%;
+    min-width: 300px;
+    max-width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    min-height: 250px;
+    margin-top: 20px;
+  }
+  
+  .terminal-header {
+    width: calc(100% + 40px);
+    margin: -20px -20px 10px -20px;
+    font-size: 14px;
+  }
+  
+  .terminal-buttons {
+    margin-left: -40px;
+  }
+  
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+  
+  a {
+    font-size: 15px;
+  }
+  
+  .blinking-cursor-about,
+  .blinking-cursor-contact {
+    font-size: 16px;
+  }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 580px){
+  .terminal-container {
+    padding: 0 10px;
+  }
+  
+  .terminal-about {
+    min-width: 250px;
+    width: 95%;
+    padding: 15px;
+    font-size: 18px;
+    min-height: 350px;
+  }
+  
+  .terminal-contact{
+    width: 95%;
+    min-width: 250px;
+    padding: 15px;
+    font-size: 18px;
+    min-height: 200px;
+    margin-top: 15px;
+  }
+  
+  .terminal-header {
+    width: calc(100% + 30px);
+    margin: -15px -15px 8px -15px;
+    font-size: 14px;
+  }
+  
+  .terminal-buttons {
+    margin-left: -30px;
+  }
+  
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    min-width: 12px;
+    min-height: 12px;
+  }
+  
+  a {
+    font-size: 15px;
+  }
+  
+  .blinking-cursor-about,
+  .blinking-cursor-contact {
+    font-size: 16px;
+  }
+}
+
+/* Small mobile styles */
+@media screen and (max-width: 400px){
+  .terminal-container {
+    padding: 0 5px;
+  }
+  
+  .terminal-about {
+    min-width: 200px;
+    width: 98%;
+    padding: 12px;
+    font-size: 16px;
+    min-height: 300px;
+  }
+  
+  .terminal-contact{
+    width: 98%;
+    min-width: 200px;
+    padding: 12px;
+    font-size: 16px;
+    min-height: 180px;
+    margin-top: 12px;
+  }
+  
+  .terminal-header {
+    width: calc(100% + 24px);
+    margin: -12px -12px 6px -12px;
+    font-size: 11px;
+  }
+  
+  .terminal-buttons {
+    margin-left: -24px;
+  }
+  
+  .terminal-button {
+    width: 8px;
+    height: 8px;
+    margin-right: 2px;
+    min-width: 8px;
+    min-height: 8px;
+  }
+  
+  a {
+    font-size: 11px;
+  }
+  
+  .blinking-cursor-about,
+  .blinking-cursor-contact {
+    font-size: 12px;
+  }
+  
+  .innerList {
+    margin-left: 10px;
+  }
+  
+  li {
+    margin: 3px 0;
+  }
+}
+
+/* Touch-friendly styles for mobile */
+@media screen and (max-width: 768px) {
+  .terminal-button {
+    cursor: pointer;
+  }
+  
+  .terminal-header {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  .terminal-header:active {
+    cursor: grabbing;
+  }
+  
+  /* Improve touch targets */
+  a {
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  a:hover {
+    background-color: rgba(255, 195, 0, 0.1);
+  }
+}
+
+/* Prevent text selection on draggable elements */
+.terminal-header,
+.terminal-buttons {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Smooth transitions for responsive changes */
+.terminal-about,
+.terminal-contact {
+  transition: width 0.3s ease, height 0.3s ease, padding 0.3s ease;
+}
+
+/* Disable internal scrolling in terminal windows */
+.terminal-about,
+.terminal-contact {
+  overflow: hidden;
+}
+
+/* Improve readability on small screens */
+@media screen and (max-width: 400px) {
+  .terminal-about,
+  .terminal-contact {
+    line-height: 1.4;
+  }
+  
+  .showAboutMe p,
+  .showContactMe p {
+    margin-bottom: 8px;
+  }
+  
+  .showAboutMe ul,
+  .showContactMe ul {
+    margin-left: 15px;
   }
 }
