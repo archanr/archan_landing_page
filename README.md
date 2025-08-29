@@ -1,7 +1,7 @@
 # Source Code - Archan's Website 
 
 ####
-Created by Archan Rupela | Last Updated July 2024
+Created by Archan Rupela | Last Updated August 2025
 ### Created using HTML, CSS, and JavaScript with React Framework
 
 ### Instructions

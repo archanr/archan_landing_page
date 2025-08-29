@@ -85,18 +85,17 @@ class App extends React.Component {
               </div>
               <div>
                 <div className="showAboutMe">
-                  <p> Hello! My name is Archan Rupela and welcome to my page on the internet. I'm an engineer, game developer, and leader with <b>four</b> years of industry experience. Check out my published games from the link below! </p>
+                  <p> Hello! My name is Archan Rupela and welcome to my corner of the internet. I'm an engineer, game developer, and leader with <b>{new Date().getFullYear() - 2021}</b> years of industry experience. Check out my published games from the link below! </p>
                   Chances are, you're here to learn more about my <b>professional experience</b>:
                   <ul>
-                   <li> Currently a <b>Software Engineer</b> at American Express and: </li>
+                   <li> Currently a <b>Software Engineer</b> at <b>American Express</b> and: </li>
                    <ul className="innerList">
-                    <li> Writing GitHub Actions workflows </li>
-                    <li> Using continuous integration and delivery (CI/CD) design practices to automate and improve the pipeline</li>
-                    <li> Developing using different coding languages (Python, Java, Bash) </li>
+                    <li> Developing GitHub Actions-based CI/CD pipelines (Python, Bash) that automate build/test/deploy processes</li>
+                    <li> Installing, configuring, and upgrading the GitHub Enterprise Server appliance </li>
+                    <li> Migrating all company source code to GitHub Enterprise Cloud so teams can collaborate more easily, ship changes faster, and rely on built-in security </li>
                    </ul>
-                   <li> Previous worked as a <b>Software Developer</b> at Charles Schwab </li>
                   </ul>
-                  <p>I'm confident that all these skills are exceptionally useful to me as an engineer. I am always on the lookout for new, challenging opportunities. Feel free to contact me!</p>
+                  <p>I am always on the lookout for new, challenging opportunities. Feel free to contact me!</p>
                   <span className="systemTerminalScheme2">~</span>
                   <span color="white"> $ </span>
                   <span className="blinking-cursor-about">|</span>
@@ -127,13 +126,11 @@ class App extends React.Component {
               <div className="showContactMe">
                 <p>
                   <b>Resume: </b>
-                  <a href="https://drive.google.com/file/d/19COvtU1ltpJg0H98mm412ndbB0z2LeVC/view?usp=sharing" target="_blank"> Visit </a>
+                  <a href="https://drive.google.com/file/d/1JYVNCHHEAjO7ql8nPIsla70Aqr9l9xt-/view?usp=sharing" target="_blank"> Visit </a>
                 </p>
                 <p>
                   <b>LinkedIn: </b>
                   <a href="https://www.linkedin.com/in/archanrupela" target="_blank">Visit</a>
-                  <b> | GitHub: </b>
-                  <a href="https://github.com/archanr" target="_blank">Visit</a>
                 <p>
                   <b>Email: </b>
                   <a href="mailto:archanrupela@outlook.com"> archanrupela@outlook.com </a>
